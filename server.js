@@ -8,6 +8,9 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Servir arquivos estáticos da pasta atual (ou onde estão seus arquivos HTML, CSS, etc.)
+app.use(express.static(path.join(__dirname)));
+
 // Servir o arquivo HTML do formulário na rota principal
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html')); // Envia o arquivo index.html ao acessar "/"
