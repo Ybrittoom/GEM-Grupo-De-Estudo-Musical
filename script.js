@@ -5,7 +5,7 @@ function redirecionarCordas() {
 
 //funçao para redirecionar para o arquivo .html da pasta Madeiras
 function redirecionarMadeiras() {
-window.location.href = "Madeiras/index.html"; // Substitua pelo nome da sua página
+window.location.href = "madeiras/index.html"; // Substitua pelo nome da sua página
 }
 
 //funçao para redirecionar para o arquivo .html da pasta Metais

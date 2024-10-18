@@ -75,6 +75,62 @@ app.get('/ver-registros1', (req, res) => {
     });
 });
 
+// Rota para receber os dados do formulário 2
+app.post('/formulario2', (req, res) => {
+    const formData = req.body;
+
+    // Lê o arquivo JSON existente ou cria um novo se não existir
+    fs.readFile('db2.json', 'utf8', (err, data) => {
+        if (err && err.code !== 'ENOENT') {
+            console.log('Erro ao ler o arquivo:', err);
+            res.status(500).send('Erro no servidor');
+            return;
+        }
+
+        // Parseia o JSON existente ou cria um novo array
+        const db = data ? JSON.parse(data) : [];
+
+        // Adiciona os novos dados ao banco de dados (array)
+        db.push({
+            nome: formData.nome,
+            email: formData.email,
+        });
+
+        // Salva os dados atualizados no arquivo
+        fs.writeFile('db2.json', JSON.stringify(db, null, 2), (err) => {
+            if (err) {
+                console.log('Erro ao salvar o arquivo:', err);
+                res.status(500).send('Erro no servidor');
+                return;
+            }
+
+            res.send('Dados do usuário 2 salvos com sucesso!');
+        });
+    });
+});
+
+// Rota para visualizar os registros do formulário 2
+app.get('/ver-registros2', (req, res) => {
+    fs.readFile('db2.json', 'utf8', (err, data) => {
+        if (err) {
+            console.log('Erro ao ler o arquivo:', err);
+            res.status(500).send('Erro no servidor');
+            return;
+        }
+
+        const registros = data ? JSON.parse(data) : [];
+        let html = '<h2>Registros:</h2><ul>';
+
+        registros.forEach(registro => {
+            html += `<li>${registro.nome} (Email: ${registro.email})</li>`;
+        });
+
+        html += '</ul>';
+        res.send(html); // Retorna os registros formatados como HTML
+    });
+});
+
+
 // Iniciar o servidor na porta 3000
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);

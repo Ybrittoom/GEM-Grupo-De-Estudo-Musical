@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Registro 1</title>
+</head>
+<body>
+    <h1>Registro de Instrutor</h1>
+    <form action="http://localhost:3000/formulario1" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+        
+        <label for="codigo">Código Pessoal:</label>
+        <input type="text" id="codigo" name="codigo" required><br><br>
+
+        <label for="totalAlunos">Total de Alunos passados:></label>
+        <input type="number" name="totalAlunos" id="totalAlunos" required><br><br>
+
+        <label for="Inicio">Início:</label>
+        <input type="time" name="inicio" id="Inicio" required><br><br>
+
+        <label for="Fim">Fim:</label>
+        <input type="time" name="fim" id="Fim" required><br><br>
+
+        <label for="data">Data:</label>
+        <input type="date" name="data" id="data" required><br><br>
+        
+        <!-- Botão para registrar -->
+        <button type="submit">Registrar</button>
+    </form>
+
+    <h2>Registros</h2>
+    <a href="/ver-registros1">Ver registros</a>
+
+
+    <footer>
+        <h2>CCB- Virgilio Basso</h2>
+    </footer>
+</body>
+</html>
